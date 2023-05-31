@@ -8,10 +8,13 @@ import Individual from "./components/Individual/Individual";
 import style from "./App.module.scss"
 
 function App() {
-  const { register, handleSubmit, watch, setValue } = useForm();
+  const { register, handleSubmit, watch, setValue, reset } = useForm();
   const onSubmit = data => console.log(data);
   const [plaintiff, setPlaintiff] = useState(false);
   const [defendant, setDefendant] = useState(false);
+  const resetHandler = () => {
+    reset();
+  }
   useEffect(() => {
     const subscription = watch((value, { name, type }) => {
       switch (name) {
@@ -143,6 +146,7 @@ function App() {
             <button
               className={clsx(style.button, style["button--grey"])}
               type="button"
+              onClick={resetHandler}
             >
               Отмена
             </button>

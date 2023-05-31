@@ -1,4 +1,4 @@
-@use "/src/assets/style/main.scss" as *;
+@use "@/assets/style/main.scss" as *;
 
 .wrapper {
   padding: 16px;
@@ -16,13 +16,12 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  background: #ffffff;
+  background: $white;
   font-family: "Poppins", sans-serif;
   // max-height: 90vh;
 }
 
 .title {
-  font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -73,7 +72,6 @@
   gap: 0 20px;
   text-align: left;
 
-  font-family: "Poppins";
   font-style: normal;
   font-size: 13px;
   line-height: 20px;
@@ -206,7 +204,7 @@
 }
 
 .button {
-  font-family: "Poppins";
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
