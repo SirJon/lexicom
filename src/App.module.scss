@@ -1,20 +1,234 @@
-.form{
+@use "/src/assets/style/main.scss" as *;
+
+.wrapper {
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // min-width: 1280px;
+  width: 100vw;
+  height: 100vh;
+  background: #f8f8fb;
+}
+.body {
+  width: 950px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: #ffffff;
+  font-family: "Poppins", sans-serif;
+  // max-height: 90vh;
+}
+
+.title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  color: #556ee6;
+
+  margin: 63px auto 46px 53px;
+}
+
+.header {
+  position: relative;
+  background: rgba(85, 110, 230, 0.25);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px 0;
+  margin: 37px 38px 42px 46px;
+  box-sizing: border-box;
+}
+
+.form--header {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 65px;
 }
 
-.list{
+.form--body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 65px;
+}
+
+.list {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 10px;
+  gap: 12px 0;
   flex-direction: column;
 }
 
-.item{
-  display: flex;
-  justify-content: space-between;
+.item {
+  display: grid;
+  grid-template-columns: 1fr 250px;
+  align-items: center;
+  gap: 0 20px;
   text-align: left;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-size: 13px;
+  line-height: 20px;
+
+  color: #495057;
+
+  .input {
+    font-weight: 400;
+  }
+}
+
+.input {
+  font-weight: 400;
+  width: 250px;
+  box-sizing: border-box;
+  padding: 10px 17px;
+
+  background: #ffffff;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+.input--checkbox {
+  display: none;
+
+  &:checked {
+    & + .label--checkbox {
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 2px;
+        width: 16px;
+        height: 16px;
+        background: #556ee6;
+        border: 1px solid #556ee6;
+        border-radius: 4px;
+      }
+      &::after {
+        content: "";
+        // content: "\2714";
+        color: #ffffff;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        left: 5px;
+        top: 7px;
+      }
+    }
+  }
+
+  & + .label--checkbox {
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 16px;
+      height: 16px;
+      background: #ffffff;
+      border: 1px solid #adb5bd;
+      border-radius: 4px;
+    }
+  }
+}
+
+.label {
+  font-weight: 500;
+}
+
+.label--bold {
+  font-family: "Calibri";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 18px;
+
+  color: #495057;
+}
+
+.label--checkbox {
+  display: block;
+  position: relative;
+  padding-left: 36px;
+}
+
+.wrapper--button {
+  width: 250px;
+  display: flex;
+  gap: 19px;
+  justify-content: space-between;
+  justify-self: end;
+  align-self: end;
+  grid-column: 2/3;
+}
+
+.button--close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(30%, -30%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #d4daf8;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15px;
+    height: 2px;
+    background: #556EE6;
+  }
+  &::before {
+    transform: translate(-50%, -50%) rotate(55deg);
+  }
+  &::after {
+    transform: translate(-50%, -50%) rotate(-55deg);
+  }
+}
+
+.invisible {
+  display: none;
+}
+
+.button {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 20px;
+  text-align: center;
+
+  padding: 8px;
+
+  color: #ffffff;
+  box-sizing: border-box;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button--grey {
+  width: 102px;
+  background: #74788d;
+  border: 1px solid #74788d;
+}
+
+.button--blue {
+  flex-grow: 1;
+  background: #556ee6;
+  border: 1px solid #556ee6;
 }
