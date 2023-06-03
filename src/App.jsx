@@ -9,7 +9,77 @@ import style from "./App.module.scss"
 
 function App() {
   const { register, handleSubmit, watch, setValue, reset } = useForm();
-  const onSubmit = data => console.log(data);
+  const onSubmit = (formData) => {
+    const { uid, case_id } = formData;
+    const plaintiff = formData.plaintiff ?
+      {
+        "inn": formData.tin_plaintiff,
+        "ogrn": formData.ogrn_plaintiff,
+        "company": formData.company_plaintiff,
+        "legal_address": formData.legal_address_plaintiff,
+        "mailing_address": formData.mailing_address_plaintiff,
+        "kpp": formData.kpp_plaintiff,
+        "pc": formData.pc_plaintiff,
+        "bank": formData.bank_plaintiff,
+        "bic": formData.bic_plaintiff,
+        "kc": formData.kc_plaintiff,
+        "type": 1,
+      }
+      :
+      {
+        "birthday": formData.birthday_plaintiff,
+        "lastname": formData.lastname_plaintiff,
+        "name": formData.name_plaintiff,
+        "surname": formData.surname_plaintiff,
+        "phone": formData.phone_plaintiff,
+        "reg_address": formData.reg_address_plaintiff,
+        "res_address": formData.reg_address_plaintiff,
+        "type": 0,
+      };
+    const defendant = formData.defendant ?
+      {
+        "inn": formData.tin_defendant,
+        "ogrn": formData.ogrn_defendant,
+        "company": formData.company_defendant,
+        "legal_address": formData.legal_address_defendant,
+        "mailing_address": formData.mailing_address_defendant,
+        "kpp": formData.kpp_defendant,
+        "pc": formData.pc_defendant,
+        "bank": formData.bank_defendant,
+        "bic": formData.bic_defendant,
+        "kc": formData.kc_defendant,
+        "type": 1,
+      }
+      :
+      {
+        "birthday": formData.birthday_defendant,
+        "lastname": formData.lastname_defendant,
+        "name": formData.name_defendant,
+        "surname": formData.surname_defendant,
+        "phone": formData.phone_defendant,
+        "reg_address": formData.reg_address_defendant,
+        "res_address": formData.reg_address_defendant,
+        "type": 0,
+      };
+
+    const data = {
+      uid,
+      case_id,
+      plaintiff,
+      defendant,
+      "start": formData.data,
+      "end": '',
+      "area_id": 12,
+      "plaintiff_type": formData.plaintiff ? 1 : 0,
+      "defendant_type": formData.defendant ? 1 : 0,
+    }
+    console.log(data)
+    /**
+     * При отправке формы делаем диспатч в store async action
+     */
+    // dispatch(fetchAction(data))
+    // .then(() => reset())
+  };
   const [plaintiff, setPlaintiff] = useState(false);
   const [defendant, setDefendant] = useState(false);
   const resetHandler = () => {
